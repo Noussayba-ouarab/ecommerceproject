@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Produit femme</title>
+   <title>Produit homme</title>
    @include('head')
 </head>
 <body>

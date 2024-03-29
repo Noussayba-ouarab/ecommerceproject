@@ -50,8 +50,8 @@ class ProfileController extends Controller
         $total_price_cn = intval($total_price * 100);
         $prepareRequest->setCurrency("MAD");
         $prepareRequest->setAmount($total_price_cn);
-        $prepareRequest->setCtrlRedirectURL("https://bfd8-102-53-10-153.ngrok-free.app/redirect");
-        $prepareRequest->setCtrlCallbackURL("https://bfd8-102-53-10-153.ngrok-free.app/costumercallback");
+        $prepareRequest->setCtrlRedirectURL("https://6dc9-102-53-10-153.ngrok-free.app/redirect");
+        $prepareRequest->setCtrlCallbackURL("https://6dc9-102-53-10-153.ngrok-free.app/costumercallback");
         $prepareRequest->setMerchantNotification(true);
         $order->setId($user->id); 
         $order->setType(OrderType::GOODS_SERVICE);

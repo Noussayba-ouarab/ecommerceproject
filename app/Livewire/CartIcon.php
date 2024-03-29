@@ -23,7 +23,7 @@ class CartIcon extends Component
     {
         $cart = Session::get('cart', []);
         Session::put('cart', $cart);
-        $sum = 0;
+        $sum = 1;
         foreach ($cart as $item) {
             // Access the total price of each item and add it to the total
             $sum = intval($item['item']);

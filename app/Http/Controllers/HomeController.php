@@ -90,8 +90,6 @@ class HomeController extends Controller
             $order = Orders::where($user->id);
             return view('welcome', ['products' => $products, 'order' => $order]);
         }
-
-
         return view('welcome', ['products' => $products]);
     }
     /**
@@ -185,5 +183,13 @@ class HomeController extends Controller
             }
         }
         return false;
+    }
+    public function perform()
+    {
+        Session::flush();
+        
+        Auth::logout();
+
+        return redirect()->route('/');
     }
 }

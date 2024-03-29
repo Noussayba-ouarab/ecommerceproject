@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>afficher produit</title>
-@include('head') 
+    @include('head')
 
 
 </head>
 
 <body>
-    
-
     <div class='container'>
-
         <section class="py-5" style='margin:50px;'>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
@@ -23,7 +20,7 @@
                         <div class="small mb-1">{{$products->name}}</div>
                         <h1 class="display-5 fw-bolder">{{$products->size}}</h1>
                         <div class="fs-5 mb-5">
-                            
+
                             <span id="productPrice">{{$products->prix}} DH</span>
                         </div>
                         <p class="lead">{{$products->description}}</p>
@@ -35,20 +32,19 @@
                                 @csrf
                                 <input type="hidden" name="prix" id='hiddenprix'>
                                 <input type="hidden" name="quantite" id="hiddenQuantity" style="max-width: 3rem">
-                                <input type="hidden" name="item" id="hiddenItem" style="max-width: 3rem"> 
+                                <input type="hidden" name="item" id="hiddenItem" style="max-width: 3rem">
                                 <button class="btn btn-outline-dark flex-shrink-0" type="submit" onclick="updateHiddenField()">
                                     <i class="bi-cart-fill me-1"></i>
                                     Add to cart
                                 </button>
                             </form>
                             <form action="{{route('payment')}}" method="POST">
-            @csrf
-            {{-- {!! QrCode::size(200)->generate(url('/payement')) !!} --}}
-            
-        <button type="submit" class="btn btn-primary">Payer</button>
-    
-      
-        </form>
+                                @csrf
+                                {{-- {!! QrCode::size(200)->generate(url('/payement')) !!} --}}
+
+                                <button type="submit" class="btn btn-primary">Payer</button>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -56,14 +52,9 @@
         </section>
 
     </div>
-    
-
-
 </body>
 
 </html>
-
-
 <script>
     var d = <?php echo $products->prix; ?>;
 
@@ -73,15 +64,18 @@
     }
 
     function add() {
-        
+
         var price = document.getElementById('price');
         var inputQuantity = document.getElementById('inputQuantity');
         var currentValue = parseInt(inputQuantity.value);
         inputQuantity.value = currentValue + 1;
+        console.log(inputQuantity.value);
         updatePrice(currentValue + 1);
         var itemCountSpan = document.getElementById('item-count');
+        console.log(itemCountSpan);
         var currentCount = parseInt(itemCountSpan.textContent);
         itemCountSpan.textContent = currentCount + 1;
+        console.log(session(sum > 0));
         if (session(sum > 0) || !empty(itemCountSpan.textContent)) {
             document.getElementById('item-count').style.display = 'inline';
         } else {
@@ -110,7 +104,6 @@
     }
 
     function updateHiddenField() {
-
         var inputQuantity = document.getElementById('inputQuantity');
         var hiddenInput = document.getElementById('hiddenQuantity');
         var inputprix = updatePrice(inputQuantity.value);
@@ -122,17 +115,7 @@
         var hiddenitemCountSpan = document.getElementById('hiddenItem');
         hiddenitemCountSpan.value = currentCount;
         console.log(hiddenitemCountSpan.value);
-
-
     }
 
-    function updateCartInLocalStorage(cartData) {
-        localStorage.setItem('cart', JSON.stringify(cartData));   
-    }
-
-    function getCartFromLocalStorage() {
-        const cartData = localStorage.getItem('cart');
-        return cartData ? JSON.parse(cartData) : [];
-    }
+    
 </script>
-

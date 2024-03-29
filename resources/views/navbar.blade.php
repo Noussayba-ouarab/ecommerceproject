@@ -20,7 +20,7 @@
                      <li><a href="{{url('/')}}">Home</a></li>
                      <li><a href="{{url('/afficheritems')}}">My products</a></li>
                      <li><a href="">payment</a></li>
-                     <li><a href="#">Customer Service</a></li>
+                     <li><a href="{{route('logout')}}">logout</a></li>
                      <li>
                         <!-- Include the Livewire component -->
                         @livewire('CartIcon')

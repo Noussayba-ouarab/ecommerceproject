@@ -36,4 +36,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete/{id}', [HomeController::class, 'delete'])->name('delete');
     Route::post('/addcommande/{id}',[HomeController::class, 'addcommande'])->name('addcommande')->secure();
     Route::post('/payment',[ProfileController::class, 'payment'])->name('payment')->secure();
+    Route::get('/logout',[HomeController::class, 'perform'])->name('perform');
 });
